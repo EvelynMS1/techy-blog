@@ -1,0 +1,9 @@
+{{!-- set blog id into attribute to div  --}}
+<div class ="comment" id="blogComment" data-id ="{{blog.id}}"  data-user_id="{{blog.user_id}}">
+<h1>{{blog.title}}</h1>
+<p>{{blog.content}}</p>
+</div>
+
+{{>blog_template}}
+<h1>On comment page</h1>
+<script src="/js/comment.js"></script>

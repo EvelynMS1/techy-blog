@@ -1,0 +1,46 @@
+<div>
+
+    {{#if iscreatedpost}}
+    {{!-- make blog clickable --}}
+    <div class="blog" id="dashboardblog" data-id={{blog.id}}>
+        <textarea id='updatedblogtitle' rows="5" cols="50">{{blog.title}}</textarea>
+        <textarea id="updatedblogtext" rows='5' cols='50'>{{blog.content}}</textarea>
+        {{!-- <p>Posted by {{this.user.username}}</p> --}}
+    </div>
+
+    {{/if}}
+    {{!-- only title if in blog --}}
+    {{#if isdashboard}}
+    <div>
+        <input id="blog-title">
+    </div>
+    <div>
+        <input id="blog-text">
+    </div>
+    {{/if}}
+    {{#if iscomment}}
+    <div>
+        <input id="blog-text-comment">
+        <button id="blogbtn">{{btn}}</button>
+    </div>
+    {{/if}}
+    <div>
+        {{#if isdashboard}}
+        {{!-- when new post --}}
+        {{!-- button would change to create or comment depending on what stage --}}
+        <button id="blogbtn">{{btn}}</button>
+        {{/if}}
+
+        {{!-- after post has been created --}}
+        {{#if iscreatedpost}}
+        <button id="updatebtn">Update</button>
+        <button id="deletebtn">Delete</button>
+        {{/if}}
+        {{!-- {{#unless isdashboard}}
+        <button id="commentbtn">comment</button>
+        {{/unless}} --}}
+    </div>
+</div>
+{{#if isdashboard}}
+<button id="newblog">New Post</button>
+{{/if}}

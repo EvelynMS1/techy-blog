@@ -15,18 +15,18 @@ Comment.init(
         primaryKey:true,
         autoIncrement:true,
     },
-    title:{
-        type:DataTypes.STRING,
-        allowNull:false,
-    },
+    // title:{
+    //     type:DataTypes.STRING,
+    //     allowNull:false,
+    // },
     date:{
-        type:DataTypes.STRING,
-        allowNull:false,
+        type:DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
     },
     comment:{
         type:DataTypes.TEXT,
         allowNull:false,
-        defaultValue:"make your presence with words"
+        // defaultValue:"make your presence with words"
 
 
     },
@@ -38,10 +38,17 @@ Comment.init(
             key:'id',
         },
     },
+    blog_id:{
+        type:DataTypes.INTEGER,
+        references:{
+            model:'blogp',
+            key:'id',
+        },
+    },
 },
 {
     sequelize,
-    timestamps:false,
+    timestamps:true,
     freezeTableName:true,
     underscored:true,
     modelName:'comment',
