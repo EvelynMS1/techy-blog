@@ -15,9 +15,10 @@ const comment = async () => {
   console.log(userId);
 
   if (inputComment && id && userId) {
-    const response = await fetch(`/createComment/${id}`, {
+    const response = await fetch(`/api/comments/createComment/${id}`, {
       method: "POST",
       body: JSON.stringify({
+        title: inputComment,
         comment: inputComment,
         user_id: userId,
         blog_id: id,
@@ -26,9 +27,11 @@ const comment = async () => {
     });
     if (response.ok) {
       const data = await response.json();
+      
+      console.log(data);
       const { id } = data;
       //same location of comment blog
-      document.location.replace(`comment/${id}`);
+      document.location.replace(`/newComment/${id}`);
     } else {
       alert(response.statusText);
     }

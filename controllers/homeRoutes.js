@@ -45,7 +45,7 @@ router.get("/blog/:id", async (req, res) => {
       ],
     });
     // const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    const blog = blogData.get({plain:true});
+    const blog = blogData.get({ plain: true });
     console.log(blog);
 
     res.status(200).render("dashboard", {
@@ -53,7 +53,7 @@ router.get("/blog/:id", async (req, res) => {
       logged_in: req.session.logged_in,
       iscreatedpost: true,
     });
-    // dont need 
+    // dont need
     // res.json(blog);
   } catch (err) {
     console.log(err);
@@ -76,16 +76,15 @@ router.get("/comment/:id", withAuth, async (req, res) => {
       ],
     });
     // const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    const blog = blogData.get({plain:true});
+    const blog = blogData.get({ plain: true });
 
     console.log(blog);
 
     res.status(200).render("comment", {
-      
       blog,
       logged_in: req.session.logged_in,
       iscomment: true,
-      btn:"Comment"
+      btn: "Comment",
     });
     // dont need this 89
     // res.json(blog);
@@ -169,15 +168,51 @@ router.get("/dashboard", (req, res) => {
     btn: "Create",
   });
 });
-
-router.get("/comment", withAuth, (req, res) => {
+//  withAuth,
+router.get("/comment", (req, res) => {
   res.render("comment", {
     logged_in: req.session.logged_in,
     iscomment: true,
     btn: "Comment",
   });
 });
+router.get("/newComment/:id", async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(req.params.id, {
+      include: [{ model: User, attributes: ["username"] }],
+    });
 
+    if (!comment) {
+      res.status(404).json({ message: "No comment found with that id!" });
+      return;
+    }
+
+    const commentData = comment.get({ plain: true });
+    const blog = await BlogP.findByPk(commentData.blog_id);
+
+    if (!blog) {
+      res.status(404).json({ message: "No blog found with that id!" });
+      return;
+    }
+
+    const blogData = blog.get({ plain: true });
+
+    console.log(blogData);
+    // res.json({
+    //   comment: commentData,
+    //   blog: blogData,
+    //   blogContent: blogData.content,
+    //   logged_in: req.session.logged_in,
+    // });
+    res.render("createdComment", {
+      comment: commentData,
+      blog: blogData,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 router.get("/homepage", (req, res) => {
   res.render("homepage");
 });

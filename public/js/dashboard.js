@@ -8,6 +8,7 @@ const bloghandler = async (event) => {
   console.log(title, content);
 
   if (title && content) {
+    //
     const response = await fetch("/api/blog/createblog", {
       method: "POST",
       body: JSON.stringify({ title, content }),
@@ -36,6 +37,7 @@ if (document.querySelector("#blogbtn")) {
 //handler for editing the blog that user created getting post by id
 const editingBlog = async () => {
   // event.preventDefault();
+  console.log("updatebtn clicked");
   const idelement = document.querySelector("#dashboardblog");
   const titleel = document.querySelector("#updatedblogtitle");
   const contentel = document.querySelector("#updatedblogtext");
@@ -76,32 +78,33 @@ if (document.querySelector("#updatebtn")) {
   document.querySelector("#updatebtn").addEventListener("click", editingBlog);
 }
 
-//deleting post that was created
-// const deleteBlog = async (event) => {
-//   const idelement = document.querySelector("#dashboardblog");
-//   if (idelement) {
-//     const id = idelement.dataset.id;
-//     const parseid = parseInt(id);
-//     if (parseid) {
-//       const response = await fetch(`/api/projects/${parseid}`, {
-//         method: "DELETE",
-//       });
-//     }
-//     if (response.ok) {
-//       document.location.replace("/");
-//     } else {
-//       alert("Failed to delete project");
-//     }
-//   }
-// };
+// deleting post that was created
+const deleteBlog = async (event) => {
+  const idelement = document.querySelector("#dashboardblog");
+  if (idelement) {
+    const id = idelement.dataset.id;
+    const parseid = parseInt(id);
+    let response;
+    if (parseid) {
+      response = await fetch(`/api/blog/blog/${parseid}`, {
+        method: "DELETE",
+      });
+    }
+    if (response && response.ok) {
+      document.location.replace("/");
+    } else {
+      alert("Failed to delete project");
+    }
+  }
+};
 
-// if (document.querySelector("#deletebtn")) {
-//   document.querySelector("#deletebtn").addEventListener("click", deleteBlog);
-// }
+if (document.querySelector("#deletebtn")) {
+  document.querySelector("#deletebtn").addEventListener("click", deleteBlog);
+}
 
-//event listenter for the edit blog button
+// event listenter for the edit blog button
 
-//handler for delete the blog that user created
+// handler for delete the blog that user created
 // const deletingBlog = async(event) =>{
 //   event.preventDefault();
 
@@ -110,4 +113,4 @@ if (document.querySelector("#updatebtn")) {
 //   //fetch api post to delete blog route
 // }
 
-//event listenter for the delete blog button
+// //event listenter for the delete blog button
