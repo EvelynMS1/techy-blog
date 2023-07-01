@@ -161,12 +161,46 @@ router.get("/signup", async (req, res) => {
     isLoginForm: false,
   });
 });
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard", {
-    logged_in: req.session.logged_in,
-    isdashboard: true,
-    btn: "Create",
-  });
+router.get("/dashboard", async (req, res) => {
+  //   res.render("dashboard", {
+  //     logged_in: req.session.logged_in,
+  //     isdashboard: true,
+  //     btn: "Create",
+  //   });
+  // });
+  try {
+    // Check if the user is logged in
+    if (!req.session.logged_in) {
+      res.redirect("/login");
+      return;
+    }
+
+    // Fetch the blogs created by the user in session
+    const blogData = await BlogP.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    // Render the dashboard view with the user's blogs
+    res.status(200).render("dashboard", {
+      user: req.session.user_id,
+      blogs,
+      logged_in: req.session.logged_in,
+      isdashboard: true,
+      userblog:true,
+      btn: "Create",
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 //  withAuth,
 router.get("/comment", (req, res) => {
@@ -213,8 +247,8 @@ router.get("/newComment/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get("/homepage", (req, res) => {
-  res.render("homepage");
-});
+// router.get("/homepage", (req, res) => {
+//   res.render("homepage");
+// });
 
 module.exports = router;

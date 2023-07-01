@@ -20,7 +20,8 @@ const blogsClickable = async (event) => {
 // display on a different page by calling the comment route
 // get comment page
 
-// add event listener and a function that follows the event
+//Click functionality applied to all blogs
+//Event listener, blogsClickable function follows event
 $blogDivs.forEach((blogDiv) => {
   blogDiv.addEventListener("click", blogsClickable);
 });
@@ -28,26 +29,3 @@ $blogDivs.forEach((blogDiv) => {
 //trigger a login/signup if not signed/logged in
 //migrates you to a different page that displays the blogs content with text field
 
-// document.addEventListener('DOMContentLoaded', (event) => {
-//   const $blogDivs = document.querySelectorAll(".blog");
-//   const blogsClickable = async (event) => {
-//     let blogId = $blogDivs.currentTarget.dataset.id;
-//     const parseid = parseInt(blogId);
-//     console.log(parseid);
-//     const response = await fetch("/api/user/status");
-//     if (response.ok) {
-//       document.location.replace(`comment/${parseid}`);
-//       console.log(
-//         "blog with id",
-//         event.currentTarget.dataset.id,
-//         "is now clickable"
-//       );
-//     } else {
-//       document.location.replace(`login/`);
-//     }
-//   };
-
-//   $blogDivs.forEach((blogDiv) => {
-//     blogDiv.addEventListener("click", blogsClickable);
-//   });
-// });
