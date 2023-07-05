@@ -51,6 +51,7 @@ router.get("/blog/:id", async (req, res) => {
     res.status(200).render("dashboard", {
       blog,
       logged_in: req.session.logged_in,
+      // this is for the update and delete btns that show up on the page 
       iscreatedpost: true,
     });
     // dont need
@@ -194,6 +195,7 @@ router.get("/dashboard", async (req, res) => {
       user: req.session.user_id,
       blogs,
       logged_in: req.session.logged_in,
+      //state for partial
       isdashboard: true,
       userblog:true,
       btn: "Create",

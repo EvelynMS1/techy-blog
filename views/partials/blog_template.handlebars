@@ -2,7 +2,7 @@
 
   {{#if iscreatedpost}}
     {{! make blog clickable }}
-    <div class="blog" id="dashboardblog" data-id={{blog.id}}>
+    <div class="createdBlog" id="dashboardblog" data-id={{blog.id}}>
       <textarea
         id="updatedblogtitle"
         rows="5"
@@ -18,7 +18,7 @@
 
   {{/if}}
   
-
+{{!-- when on dashboard page  --}}
   {{#if isdashboard}}
     <div>
       <input id="blog-title" />
@@ -34,6 +34,7 @@
     </div>
   {{/if}}
  <div>
+  {{!-- When on dashboard page --}}
     {{#if isdashboard}}
       {{! when new post }}
       {{! button would change to create or comment depending on what stage }}
@@ -45,22 +46,24 @@
       <button id="updatebtn">Update</button>
       <button id="deletebtn">Delete</button>
     {{/if}}
-    {{#unless isdashboard}}
+    {{!-- When on dashboard page --}}
+    {{#if isdashboard}}
         <button id="commentbtn">comment</button>
-        {{/unless}}
+    {{/if}}
   </div> 
   <div>
+    {{!-- When on dashboard page --}}
     {{#if userblog}}
       <div class="container">
         {{#each blogs}}
           {{! make div with class blog clickable  }}
-          <div class="blog" data-id="{{id}}">
+          {{!-- blog --}}
+          <div class="createdBlog" data-id="{{id}}">
             <h2>{{title}}</h2>
             <p>{{content}}</p>
             <p>Posted by {{user}}</p> 
             {{!-- only show btns if the blog is clicked taken to another page  --}}
-          <button id="updatebtn">Update</button>
-          <button id="deletebtn">Delete</button>  
+
           </div>
          
         {{/each}}
@@ -73,7 +76,7 @@
     {{/if}}
   </div>
 </div>
-
+{{!-- When on dashboard page  --}}
 {{#if isdashboard}}
   <button id="newblog">New Post</button>
 {{/if}}

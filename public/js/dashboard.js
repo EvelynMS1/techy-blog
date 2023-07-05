@@ -1,3 +1,4 @@
+//Creates a new blog with POST fetch request to back-end
 const bloghandler = async (event) => {
   event.preventDefault();
   //create a fetch post
@@ -33,11 +34,64 @@ if (document.querySelector("#blogbtn")) {
 }
 //clicks on the button and then the blog post fields pop up how
 //do i get it to display?
+const $blogsDivs = document.querySelectorAll(".createdBlog");
 
+if ($blogsDivs.length > 0) {
+  const blogsClickable = async (event) => {
+    event.preventDefault();
+    let blogId = event.currentTarget.dataset.id;
+    const response = await fetch("/api/user/status");
+
+    if (response.ok) {
+      document.location.replace(`/blog/${blogId}`);
+      console.log(
+        "blog with id",
+        event.currentTarget.dataset.id,
+        "is now clickable"
+      );
+    } else {
+      console.log("No blog element");
+    }
+  };
+
+  $blogsDivs.forEach((blogDiv) => {
+    blogDiv.addEventListener("click", blogsClickable);
+  });
+} else {
+  console.log("No blogs found");
+}
+document.querySelectorAll("textarea").forEach((textarea) => {
+  textarea.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+});
+
+// const $blogsDivs = document.querySelectorAll(".blog");
+// const blogsClickable = async (event) => {
+//   event.preventDefault();
+//   let blogId = event.currentTarget.dataset.id;
+//   const response = await fetch("/api/user/status");
+
+//   if (response.ok) {
+//     document.location.replace(`/blog/${blogId}`);
+//     console.log(
+//       "blog with id",
+//       event.currentTarget.dataset.id,
+//       "is now clickable"
+//     );
+//   } else {
+//     console.log("No blog element");
+//   }
+// };
+
+// $blogsDivs.forEach((blogDiv) => {
+//   blogDiv.addEventListener("click", blogsClickable);
+// });
 //handler for editing the blog that user created getting post by id
-const editingBlog = async () => {
-  // event.preventDefault();
+const editingBlog = async (event) => {
+  event.preventDefault();
   console.log("updatebtn clicked");
+  //will need to have this as a variable for all blogs
   const idelement = document.querySelector("#dashboardblog");
   const titleel = document.querySelector("#updatedblogtitle");
   const contentel = document.querySelector("#updatedblogtext");
@@ -80,6 +134,7 @@ if (document.querySelector("#updatebtn")) {
 
 // deleting post that was created
 const deleteBlog = async (event) => {
+  event.preventDefault();
   const idelement = document.querySelector("#dashboardblog");
   if (idelement) {
     const id = idelement.dataset.id;
