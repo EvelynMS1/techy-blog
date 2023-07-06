@@ -3,91 +3,89 @@
   {{#if iscreatedpost}}
     {{! make blog clickable }}
     <div class="createdBlog" id="dashboardblog" data-id={{blog.id}}>
-      <textarea
-        id="updatedblogtitle"
-        rows="5"
-        cols="50"
-      >{{blog.title}}</textarea>
-      <textarea
-        id="updatedblogtext"
-        rows="5"
-        cols="50"
-      >{{blog.content}}</textarea>
-      <p>Posted by {{this.user.username}}</p>
-    </div> 
+      <div>
+        <h2 class="hpBHeader">Edit Blog</h2>
+      </div>
+      <div>
+        <h3>Title</h3>
+        <textarea
+          id="updatedblogtitle"
+          rows="5"
+          cols="50"
+        >{{blog.title}}</textarea>
+      </div>
+      <div>
+        <h3>Content</h3>
+        <textarea
+          id="updatedblogtext"
+          rows="5"
+          cols="50"
+        >{{blog.content}}</textarea>
+      </div>
+      <div>
+        <button id="updatebtn">Update</button>
+        <button id="deletebtn">Delete</button>
+      </div>
+
+    </div>
 
   {{/if}}
-  
-{{!-- Creating a blog when on dashboard page --}}
+
+  {{! Creating a blog when on dashboard page }}
   {{#if isdashboard}}
-    <div class="dashboardBlog"> 
+    <div class="dashboardBlog">
       <div>
         <h2 class="hpBHeader">CreateBlog</h2>
       </div>
-      <div >
-      <h3>Title</h3>
-      <input id="blog-title" />
+      <div>
+        <h3>Title</h3>
+        <input id="blog-title" />
       </div>
       <div>
-      <h3>Content</h3>
-      <input id="blog-text" />
-      </div>  
+        <h3>Content</h3>
+        <input id="blog-text" />
+      </div>
       <button id="blogbtn">{{btn}}</button>
     </div>
-   
+
   {{/if}}
+
   {{#if iscomment}}
     <div>
+      <h3>Comment</h3>
       <input id="blog-text-comment" />
       <button id="blogbtn">{{btn}}</button>
     </div>
   {{/if}}
- <div>
 
-
-    {{! after post has been created }}
-    {{#if iscreatedpost}}
-      <button id="updatebtn">Update</button>
-      <button id="deletebtn">Delete</button>
-    {{/if}}
-    {{!-- When on dashboard page --}}
-    {{#if iscreatedpost}}
-        <button id="commentbtn">comment</button>
-    {{/if}}
-  </div> 
-  <div>
-    {{!-- When on dashboard page --}}
-    {{#if userblog}}
-      <div class="container">
-        {{#each blogs}}
-          {{! make div with class blog clickable  }}
-          {{!-- blog --}}
-          <div class="createdBlog" data-id="{{id}}">
-            <div class="hpBHeader">
-              <h2>{{title}}</h2> 
-              <p>Posted by {{user}}</p> 
-            </div>
-          
-            <p>{{content}}</p>
-        
-            {{!-- only show btns if the blog is clicked taken to another page  --}}
-
-          </div>
-         
-        {{/each}}
-    {{else}}
-
-          {{! look into data-attribute  and data content specifically this. id }}
-          <p>No blogs have been posted yet.</p>
-      
+  {{! When on dashboard page }}
+  {{#if newComment}}
+    <div class="container">
+      {{! make div with class blog clickable  }}
+      {{! blog }}
+      <div
+        class="createdBlog"
+        data-id="{{blog.id}}"
+        data-user_id="{{blog.user_id}}"
+      >
+        <div class="hpBHeader">
+          <h2>{{blog.title}}</h2>
+          <p>{{blog.content}}</p>
+          <p>Posted by {{blog.user}}</p>
+        </div>
+        <p>{{content}}</p>
       </div>
-    {{/if}}
-  </div>
-</div>
-{{!-- When on dashboard page  --}}
-{{#if isdashboard}}
-<div id="newblogBTN">
-    <button >New Post</button>
+
+      {{! look into data-attribute  and data content specifically this. id }}
+
+    </div>
+  {{/if}}
+
 </div>
 
+{{! When on dashboard page  }}
+{{#if isdashboard}}
+  <div id="newblogBTN">
+    <button>New Post</button>
+  </div>
 {{/if}}

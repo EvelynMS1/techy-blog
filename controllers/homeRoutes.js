@@ -241,6 +241,7 @@ router.get("/newComment/:id", async (req, res) => {
     //   logged_in: req.session.logged_in,
     // });
     res.render("createdComment", {
+      newComment:true,
       comment: commentData,
       blog: blogData,
       logged_in: req.session.logged_in,
