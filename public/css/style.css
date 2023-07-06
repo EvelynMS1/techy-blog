@@ -1,0 +1,37 @@
+.navList li {
+  display: inline-block;
+}
+header {
+  background-color: rgba(149, 241, 241, 0.871);
+  padding: 2%;
+}
+.techLogo h1 {
+  background-color: rgb(212, 65, 148);
+  border-radius: 5px;
+}
+.sessionPage {
+  border-style: solid;
+}
+.sessionPage h1 {
+  background-color: rgba(179, 122, 232, 0.942);
+  border-bottom: solid;
+}
+.homepageBlog,
+.createdBlog,
+.dashboardBlog {
+  margin: 2%;
+  border-style: solid;
+}
+.hpBHeader {
+  background-color: rgb(238, 225, 123);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid;
+}
+#newblogBTN {
+  display: flex;
+  justify-content: center;
+}
+/* nav ul li {
+  padding-right: 10px;
+} */

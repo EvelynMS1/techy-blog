@@ -1,5 +1,5 @@
 //get element div
-const $blogDivs = document.querySelectorAll(".blog");
+const $blogDivs = document.querySelectorAll(".homepageBlog");
 const blogsClickable = async (event) => {
   let blogId = event.currentTarget.dataset.id;
   const response = await fetch("/api/user/status");
@@ -28,4 +28,3 @@ $blogDivs.forEach((blogDiv) => {
 
 //trigger a login/signup if not signed/logged in
 //migrates you to a different page that displays the blogs content with text field
-

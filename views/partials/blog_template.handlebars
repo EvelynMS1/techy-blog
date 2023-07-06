@@ -18,14 +18,23 @@
 
   {{/if}}
   
-{{!-- when on dashboard page  --}}
+{{!-- Creating a blog when on dashboard page --}}
   {{#if isdashboard}}
-    <div>
+    <div class="dashboardBlog"> 
+      <div>
+        <h2 class="hpBHeader">CreateBlog</h2>
+      </div>
+      <div >
+      <h3>Title</h3>
       <input id="blog-title" />
-    </div>
-    <div>
+      </div>
+      <div>
+      <h3>Content</h3>
       <input id="blog-text" />
+      </div>  
+      <button id="blogbtn">{{btn}}</button>
     </div>
+   
   {{/if}}
   {{#if iscomment}}
     <div>
@@ -34,12 +43,7 @@
     </div>
   {{/if}}
  <div>
-  {{!-- When on dashboard page --}}
-    {{#if isdashboard}}
-      {{! when new post }}
-      {{! button would change to create or comment depending on what stage }}
-      <button id="blogbtn">{{btn}}</button>
-    {{/if}}
+
 
     {{! after post has been created }}
     {{#if iscreatedpost}}
@@ -47,7 +51,7 @@
       <button id="deletebtn">Delete</button>
     {{/if}}
     {{!-- When on dashboard page --}}
-    {{#if isdashboard}}
+    {{#if iscreatedpost}}
         <button id="commentbtn">comment</button>
     {{/if}}
   </div> 
@@ -59,9 +63,13 @@
           {{! make div with class blog clickable  }}
           {{!-- blog --}}
           <div class="createdBlog" data-id="{{id}}">
-            <h2>{{title}}</h2>
+            <div class="hpBHeader">
+              <h2>{{title}}</h2> 
+              <p>Posted by {{user}}</p> 
+            </div>
+          
             <p>{{content}}</p>
-            <p>Posted by {{user}}</p> 
+        
             {{!-- only show btns if the blog is clicked taken to another page  --}}
 
           </div>
@@ -78,5 +86,8 @@
 </div>
 {{!-- When on dashboard page  --}}
 {{#if isdashboard}}
-  <button id="newblog">New Post</button>
+<div id="newblogBTN">
+    <button >New Post</button>
+</div>
+
 {{/if}}
