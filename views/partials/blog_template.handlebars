@@ -79,7 +79,30 @@
 
     </div>
   {{/if}}
+ <div>
+    {{#if userblog}}
+      <div class="container">
+        {{#each blogs}}
+          {{! make div with class blog clickable  }}
+          <div class="createdBlog" data-id="{{id}}">
+            <div>
+                <h2 class="hpBHeader">{{title}}</h2>
+            </div>
+          
+            <p>{{content}}</p>
+            {{!-- only show btns if the blog is clicked taken to another page  --}}
+        
+          </div>
+         
+        {{/each}}
+    {{else}}
 
+          {{! look into data-attribute  and data content specifically this. id }}
+          <p>No blogs have been posted yet.</p>
+      
+      </div>
+    {{/if}}
+  </div>
 </div>
 
 {{! When on dashboard page  }}
