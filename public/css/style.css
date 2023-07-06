@@ -18,7 +18,8 @@ header {
 }
 .homepageBlog,
 .createdBlog,
-.dashboardBlog {
+.dashboardBlog,
+.commentBlog {
   margin: 2%;
   border-style: solid;
 }

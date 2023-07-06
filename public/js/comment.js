@@ -18,7 +18,6 @@ const comment = async () => {
     const response = await fetch(`/api/comments/createComment/${id}`, {
       method: "POST",
       body: JSON.stringify({
-        title: inputComment,
         comment: inputComment,
         user_id: userId,
         blog_id: id,

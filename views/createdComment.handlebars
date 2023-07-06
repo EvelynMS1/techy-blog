@@ -1,15 +1,18 @@
+{{>blog_template}}
 
-<div>Created Comment</div>
 <div
-  class="comment"
+  class="commentBlog"
   id="blogComment"
   data-id="{{comment.id}}"
   data-user_id="{{comment.user_id}}"
 >
+<div class="hpBHeader">
+  <h3>Created Comment</h3>
+</div>
+  
   <div>
     <h1>{{comment.title}}</h1>
     <p>{{comment.comment}}</p>
   </div>
 
 </div>
-{{>blog_template}}
