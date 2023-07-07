@@ -32,10 +32,17 @@ const bloghandler = async (event) => {
 if (document.querySelector("#blogbtn")) {
   document.querySelector("#blogbtn").addEventListener("click", bloghandler);
 }
+const createDashboardBlog = document.querySelector(".dashboardBlog");
+if (document.querySelector("#newBlogBTN")) {
+  document.querySelector("#newBlogBTN").addEventListener("click", function () {
+    createDashboardBlog.style.display = "block";
+  });
+}
 //clicks on the button and then the blog post fields pop up how
 //do i get it to display?
 const $blogsDivs = document.querySelectorAll(".createdBlog");
 
+//Blogs Previously created by User Option for Edit and Delete
 if ($blogsDivs.length > 0) {
   const blogsClickable = async (event) => {
     event.preventDefault();
@@ -111,7 +118,7 @@ if (document.querySelector("#updatebtn")) {
   document.querySelector("#updatebtn").addEventListener("click", editingBlog);
 }
 
-// deleting post that was created
+// Deleting post that was created
 const deleteBlog = async (event) => {
   event.preventDefault();
   const idelement = document.querySelector("#dashboardblog");
@@ -135,5 +142,3 @@ const deleteBlog = async (event) => {
 if (document.querySelector("#deletebtn")) {
   document.querySelector("#deletebtn").addEventListener("click", deleteBlog);
 }
-
-

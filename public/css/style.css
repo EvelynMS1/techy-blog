@@ -23,7 +23,9 @@ header {
   margin: 2%;
   border-style: solid;
 }
-
+.dashboardBlog {
+  display: None;
+}
 .commentBlog {
   border: solid black;
   border-top-width: 30px;
