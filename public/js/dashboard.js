@@ -9,7 +9,7 @@ const bloghandler = async (event) => {
   console.log(title, content);
 
   if (title && content) {
-    //
+    //api/blog
     const response = await fetch("/api/blog/createblog", {
       method: "POST",
       body: JSON.stringify({ title, content }),
@@ -22,8 +22,8 @@ const bloghandler = async (event) => {
       const data = await response.json();
       console.log(data);
       //destructre data
-      const { id } = data;
-      document.location.replace(`/blog/${id}`);
+      // const { id } = data;
+      document.location.replace(`/dashboard`);
     } else {
       alert("failed to create blog post");
     }
