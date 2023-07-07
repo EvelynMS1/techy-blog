@@ -2,10 +2,10 @@
   {{#each blogs}}
     {{! make div with class blog clickable  }}
     <div class="homepageBlog" data-id="{{this.id}}">
-        {{!-- homepageBlogHeader --}}
+      {{! homepageBlogHeader }}
       <div class="hPBHeader">
         <h2>{{this.title}}</h2>
-        <p>Posted by {{this.user.username}}</p>
+        <p>Posted by {{this.user.username}}{{this.date}}</p>
       </div>
       <p>{{this.content}}</p>
 

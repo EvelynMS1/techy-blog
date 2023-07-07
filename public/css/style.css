@@ -19,10 +19,15 @@ header {
 .homepageBlog,
 .createdBlog,
 .dashboardBlog,
-.commentBlog {
+.createComment {
   margin: 2%;
   border-style: solid;
 }
+
+.commentBlog {
+  border: solid black;
+}
+
 .hpBHeader {
   background-color: rgb(238, 225, 123);
   display: flex;

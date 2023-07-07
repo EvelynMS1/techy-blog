@@ -51,7 +51,7 @@
   {{/if}}
 
   {{#if iscomment}}
-    <div>
+    <div class="createComment">
       <h3>Comment</h3>
       <input id="blog-text-comment" />
       <button id="blogbtn">{{btn}}</button>
@@ -61,22 +61,17 @@
   {{! When on dashboard page }}
   {{#if newComment}}
     <div class="container">
-      {{! make div with class blog clickable  }}
-      {{! blog }}
       <div
         class="createdBlog"
         data-id="{{blog.id}}"
         data-user_id="{{blog.user_id}}"
       >
         <div class="hpBHeader">
-          <p>Posted by {{blog.user}}</p>
+          <p>Posted by {{blog.user}}{{blog.date}}</p>
         </div>
         <p>{{blog.content}}</p>
 
       </div>
-
-      {{! look into data-attribute  and data content specifically this. id }}
-
     </div>
   {{/if}}
  <div>
@@ -85,8 +80,9 @@
         {{#each blogs}}
           {{! make div with class blog clickable  }}
           <div class="createdBlog" data-id="{{id}}">
-            <div>
-                <h2 class="hpBHeader">{{title}}</h2>
+            <div class="hpBHeader">
+                <h2>{{title}}</h2>
+                <p>{{date}}</p>
             </div>
           
             <p>{{content}}</p>
@@ -95,10 +91,10 @@
           </div>
          
         {{/each}}
-    {{else}}
+              {{else}}
 
           {{! look into data-attribute  and data content specifically this. id }}
-          <p>No blogs have been posted yet.</p>
+                  <p>No blogs have been posted yet.</p>
       
       </div>
     {{/if}}
