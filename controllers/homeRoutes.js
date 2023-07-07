@@ -95,46 +95,6 @@ router.get("/comment/:id", withAuth, async (req, res) => {
   }
 });
 
-// router.get('/blogupdate/:id', async(req,res)=>{
-//     console.log('req.params.id: home routes get of updated blog', req.params.id);
-//     try{
-//         const blogData = await BlogP.findByPk(req.params.id,{
-
-//             include:[
-//             {
-//                 model:User,
-//                 // include: [User],
-//             }
-//         ],
-//         });
-//         const blog = blogData.get({plain:true});
-//         res.status(200).render('dashboard',{
-//             blog,
-//             logged_in:req.session.logged_in,
-//             iscreatedpost:true
-//         });
-//     }catch(err){
-//         res.status(500).json(err);
-//     }
-// });
-
-//post on blog that has a user id  on seperate page
-// router.post('/comment',withAuth,async(req,res)=>{
-//     try{
-//         //get all comments that were made on the blog that was clicked
-//         //depending on the user id connected to the blog
-//         const newComment = await Comment.create({
-//             ...req.body,
-//             user_id:req.session.user_id,
-//             blog_id: req.body.blog_id
-//         });
-//         res.status(200).json(newComment);
-//     }catch(err){
-//         res.status(500).json(err);
-//     }
-// })
-//create a comment/:id so that the comment can be associated to the blog
-
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/dashboard");

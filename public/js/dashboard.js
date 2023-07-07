@@ -66,28 +66,7 @@ document.querySelectorAll("textarea").forEach((textarea) => {
   });
 });
 
-// const $blogsDivs = document.querySelectorAll(".blog");
-// const blogsClickable = async (event) => {
-//   event.preventDefault();
-//   let blogId = event.currentTarget.dataset.id;
-//   const response = await fetch("/api/user/status");
-
-//   if (response.ok) {
-//     document.location.replace(`/blog/${blogId}`);
-//     console.log(
-//       "blog with id",
-//       event.currentTarget.dataset.id,
-//       "is now clickable"
-//     );
-//   } else {
-//     console.log("No blog element");
-//   }
-// };
-
-// $blogsDivs.forEach((blogDiv) => {
-//   blogDiv.addEventListener("click", blogsClickable);
-// });
-//handler for editing the blog that user created getting post by id
+//Once blog is created; Edit button trigger event
 const editingBlog = async (event) => {
   event.preventDefault();
   console.log("updatebtn clicked");
@@ -157,15 +136,4 @@ if (document.querySelector("#deletebtn")) {
   document.querySelector("#deletebtn").addEventListener("click", deleteBlog);
 }
 
-// event listenter for the edit blog button
 
-// handler for delete the blog that user created
-// const deletingBlog = async(event) =>{
-//   event.preventDefault();
-
-//   //select the elements that will be used for the fetch api
-
-//   //fetch api post to delete blog route
-// }
-
-// //event listenter for the delete blog button
