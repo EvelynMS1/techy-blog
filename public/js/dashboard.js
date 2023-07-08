@@ -21,8 +21,6 @@ const bloghandler = async (event) => {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      //destructre data
-      // const { id } = data;
       document.location.replace(`/dashboard`);
     } else {
       alert("failed to create blog post");

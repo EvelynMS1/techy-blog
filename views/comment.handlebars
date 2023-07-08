@@ -6,7 +6,19 @@
 </div>
 <p>{{blog.content}}</p>
 </div>
-
+<div class="container">
+    {{#if comments}}
+        {{#each comments}}
+            <div class="commentBlog" data-id="{{this.id}}" data-user_id="{{this.user_id}}">
+                <p>{{this.comment}}</p>
+                <p>-{{this.user.name}}, {{this.date}}</p>
+            </div>
+           
+        {{/each}}
+    {{else}}
+        <p>No comments have been posted yet.</p>
+    {{/if}}
+</div>
 {{>blog_template}}
 
 <script src="/js/comment.js"></script>

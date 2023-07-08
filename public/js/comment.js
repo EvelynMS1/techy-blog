@@ -26,11 +26,12 @@ const comment = async () => {
     });
     if (response.ok) {
       const data = await response.json();
-      
+
       console.log(data);
-      const { id } = data;
+      const { blog_id } = data;
       //same location of comment blog
-      document.location.replace(`/newComment/${id}`);
+      document.location.replace(`/comment/${blog_id}`);
+      // document.location.replace(`/newComment/${id}`);
     } else {
       alert(response.statusText);
     }

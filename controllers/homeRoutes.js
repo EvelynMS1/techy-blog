@@ -51,7 +51,7 @@ router.get("/blog/:id", async (req, res) => {
     res.status(200).render("dashboard", {
       blog,
       logged_in: req.session.logged_in,
-      // this is for the update and delete btns that show up on the page 
+      // this is for the update and delete btns that show up on the page
       iscreatedpost: true,
     });
     // dont need
@@ -78,10 +78,13 @@ router.get("/comment/:id", withAuth, async (req, res) => {
     });
     // const blogs = blogData.map((blog) => blog.get({ plain: true }));
     const blog = blogData.get({ plain: true });
+    const comments = blog.comments;
 
+    console.log("comments" + JSON.stringify(comments, null, 2));
     console.log(blog);
 
     res.status(200).render("comment", {
+      comments,
       blog,
       logged_in: req.session.logged_in,
       iscomment: true,
@@ -123,12 +126,6 @@ router.get("/signup", async (req, res) => {
   });
 });
 router.get("/dashboard", async (req, res) => {
-  //   res.render("dashboard", {
-  //     logged_in: req.session.logged_in,
-  //     isdashboard: true,
-  //     btn: "Create",
-  //   });
-  // });
   try {
     // Check if the user is logged in
     if (!req.session.logged_in) {
@@ -157,7 +154,7 @@ router.get("/dashboard", async (req, res) => {
       logged_in: req.session.logged_in,
       //state for partial
       isdashboard: true,
-      userblog:true,
+      userblog: true,
       btn: "Create",
     });
   } catch (err) {
@@ -201,7 +198,7 @@ router.get("/newComment/:id", async (req, res) => {
     //   logged_in: req.session.logged_in,
     // });
     res.render("createdComment", {
-      newComment:true,
+      newComment: true,
       comment: commentData,
       blog: blogData,
       logged_in: req.session.logged_in,
