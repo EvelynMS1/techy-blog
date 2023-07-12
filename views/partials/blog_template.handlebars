@@ -74,28 +74,24 @@
       </div>
     </div>
   {{/if}}
- <div>
+  <div>
     {{#if userblog}}
       <div class="container">
         {{#each blogs}}
           {{! make div with class blog clickable  }}
           <div class="createdBlog" data-id="{{id}}">
             <div class="hpBHeader">
-                <h2>{{title}}</h2>
-                <p>{{date}}</p>
+              <h2>{{title}}</h2>
+              <p>{{date}}</p>
             </div>
-          
-            <p>{{content}}</p>
-            {{!-- only show btns if the blog is clicked taken to another page  --}}
-        
-          </div>
-         
-        {{/each}}
-              {{else}}
 
-          {{! look into data-attribute  and data content specifically this. id }}
-                  <p>No blogs have been posted yet.</p>
-      
+            <p>{{content}}</p>
+            {{! only show btns if the blog is clicked taken to another page  }}
+
+          </div>
+
+        {{/each}}
+
       </div>
     {{/if}}
   </div>
