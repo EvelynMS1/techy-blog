@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const{ Comment,User, BlogP } = require('../../models');
+const{ Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 // router path for commentRoutes
 // api/comments
 //add a comment on homepage probably a put on the comment /comment/:id that is selected  withAuth, 
-router.post('/createComment/:id',async(req,res)=>{
+router.post('/createComment/:id',withAuth,async(req,res)=>{
     try{
         const newComment = await Comment.create({
             title:req.body.comment,

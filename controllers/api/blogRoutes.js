@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const{Comment, User, BlogP} = require('../../models');
+const{User, BlogP} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
@@ -16,7 +16,6 @@ router.get('/dashboard',  async(req,res)=>{
                 attributes: ['title','content']
             });
             const blogs = blogData.map(blog => blog.get({plain:true}));
-            // res.render('dashboard', {blogs});
             res.json(blogs);
      
             }
@@ -73,8 +72,7 @@ router.put('/blogupdate/:id',withAuth, async(req,res)=>{
         });
 
         res.status(200).json(updatedBlog.get({ plain: true })); 
-        // const blogpost = blog.get({plain:true});
-        // res.status(200).json(blog); 
+    
         
       } catch (err) {
         console.log(err);

@@ -1,7 +1,6 @@
-//Gets the input field and event listens on the button comment
 const commentBtn = document.querySelector("#blogbtn");
-//add the comment to the database
 
+//Add Comment to the database
 const comment = async () => {
   console.log("comment pressed");
   const inputComment = document.querySelector("#blog-text-comment").value;
@@ -31,7 +30,7 @@ const comment = async () => {
       const { blog_id } = data;
       //same location of comment blog
       document.location.replace(`/comment/${blog_id}`);
-      // document.location.replace(`/newComment/${id}`);
+      
     } else {
       alert(response.statusText);
     }
