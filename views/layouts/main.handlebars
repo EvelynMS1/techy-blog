@@ -10,7 +10,6 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    {{! <link rel="stylesheet" href="/css/jass.css"> }}
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
@@ -34,11 +33,9 @@
 
     </header>
     <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-
       {{{body}}}
     </main>
-    <!-- Render script for logged in users only -->
+
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}

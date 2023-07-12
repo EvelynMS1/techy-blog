@@ -2,7 +2,7 @@
   {{#each blogs}}
     {{! make div with class blog clickable  }}
     <div class="homepageBlog" data-id="{{this.id}}">
-      {{! homepageBlogHeader }}
+      {{! Acronym hPB : homepageBlogHeader }}
       <div class="hPBHeader">
         <h2>{{this.title}}</h2>
         <p>Posted by {{this.user.username}}{{this.date}}</p>
@@ -11,13 +11,8 @@
 
     </div>
   {{else}}
-    {{! look into data-attribute  and data content specifically this. id }}
     <p>No blogs have been posted yet.</p>
   {{/each}}
 </div>
 
-{{! display into cards and make the blogs clickable as well as using the data attribute to get the id }}
-{{! when the blog is clickable it redirect to a different page that will display
-the one blog and then display the comment page  }}
 <script src="./js/homepage.js"></script>
-{{! <script src="./js/comment.js"></script> }}

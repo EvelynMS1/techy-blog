@@ -2,14 +2,6 @@ const router = require('express').Router();
 const{Comment, User, BlogP} = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//dashboard
-//get all the blogs specifc sesh user has created
-// allow for puts that does an update to the blog post
-//allow for new blogs  post
-//deletes the blog post if wanted 
-//all changes made on dashboard
-//pop on the homepage 
-
 
 //getting all blog posts created by the user in sesh by specific user id
 router.get('/dashboard',  async(req,res)=>{
@@ -34,17 +26,7 @@ router.get('/dashboard',  async(req,res)=>{
     }
 });
 
-// router.get('/updatedblog/:id',asyn(req,res)=>{
-//   try{
-//     const updatedblog = await BlogP.create({
 
-//     })
-//   }catch(err){
-//     err
-//   }
-// })
-
-//Post option for creating a new blog 
 router.post('/createblog', withAuth,async(req,res)=>{
 
     try{
@@ -59,12 +41,7 @@ router.post('/createblog', withAuth,async(req,res)=>{
         res.status(200).json(err);
     }
 });
-//put that can update the blog that was created
-//comment has a user and a id for the comment itself 
-//the blogs are from that specific user 
-//selecting one of the blogs is already tied to the user we only need 
-//to get the number of the blog 
-//that was created by the user
+
 router.put('/blogupdate/:id',withAuth, async(req,res)=>{
   console.log('req.params.id: ', req.params.id);
     try {
