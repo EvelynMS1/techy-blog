@@ -167,38 +167,6 @@ router.get("/comment", (req, res) => {
     btn: "Comment",
   });
 });
-// router.get("/newComment/:id", async (req, res) => {
-//   try {
-//     const comment = await Comment.findByPk(req.params.id, {
-//       include: [{ model: User, attributes: ["username"] }],
-//     });
 
-//     if (!comment) {
-//       res.status(404).json({ message: "No comment found with that id!" });
-//       return;
-//     }
-
-//     const commentData = comment.get({ plain: true });
-//     const blog = await BlogP.findByPk(commentData.blog_id);
-
-//     if (!blog) {
-//       res.status(404).json({ message: "No blog found with that id!" });
-//       return;
-//     }
-
-//     const blogData = blog.get({ plain: true });
-
-//     console.log(blogData);
-
-//     res.render("createdComment", {
-//       newComment: true,
-//       comment: commentData,
-//       blog: blogData,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;

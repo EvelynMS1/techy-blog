@@ -16,9 +16,7 @@ const blogsClickable = async (event) => {
     document.location.replace(`login/`);
   }
 };
-// if person logged in then it can get the blog specifically and
-// display on a different page by calling the comment route
-// get comment page
+
 
 //Click functionality applied to all blogs
 //Event listener, blogsClickable function follows event
@@ -26,5 +24,3 @@ $blogDivs.forEach((blogDiv) => {
   blogDiv.addEventListener("click", blogsClickable);
 });
 
-//trigger a login/signup if not signed/logged in
-//migrates you to a different page that displays the blogs content with text field
