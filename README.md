@@ -4,6 +4,7 @@
 
 I was inspired to create this project for the purpose of utilizing an MVC folder structure. The problem that was solved by building this project was that of having the ability to create an interactive application that navigates to multiple pages with fluitity. I learned how to structure routes and have a deeper understanding with obtaining information from the back end to display onto the front end view.
 ![Deployed page](./assets/pics/deployed.jpg)
+[Deployed Link](https://lit-hamlet-71088-d3ccfc29edcb.herokuapp.com/)
 
 ## Table of Contents
 
