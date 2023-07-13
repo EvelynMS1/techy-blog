@@ -46,6 +46,7 @@ router.get("/blog/:id", async (req, res) => {
     });
     // const blogs = blogData.map((blog) => blog.get({ plain: true }));
     const blog = blogData.get({ plain: true });
+
     console.log(blog);
 
     res.status(200).render("dashboard", {
@@ -82,7 +83,10 @@ router.get("/comment/:id", withAuth, async (req, res) => {
 
     console.log("comments" + JSON.stringify(comments, null, 2));
     console.log(blog);
-
+    console.log(comments[0].user.username);
+    User.findOne().then((user) => {
+      console.log(user.username);
+    });
     res.status(200).render("comment", {
       comments,
       blog,
